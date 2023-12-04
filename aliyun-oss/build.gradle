@@ -1,0 +1,32 @@
+plugins {
+    id("maven-publish")
+    id("org.jetbrains.kotlin.jvm")
+    id "java-gradle-plugin"
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies {
+    implementation "com.android.tools.build:gradle:8.0.0"
+    implementation "commons-codec:commons-codec:1.15"
+    implementation "commons-io:commons-io:2.14.0"
+    implementation "org.ow2.asm:asm-util:9.2"
+    implementation 'com.aliyun.oss:aliyun-sdk-oss:3.17.2'
+}
+
+gradlePlugin {
+    plugins {
+        OssPlugin {
+            id = 'com.github.lany192.oss'
+            implementationClass = 'com.github.lany192.oss.AliyunOssPlugin'
+        }
+    }
+}
