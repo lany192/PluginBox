@@ -45,8 +45,11 @@ dependencies {
 }
 
 ossPlugin {
+    endpoint = "https://oss-cn-shanghai.aliyuncs.com"
+    bucketName =  'xzwcn'
     accessKeyId = 'abc123456'
     accessKeySecret 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-    bucketName =  'ssss'
+    objectName = "/plugin/hello.zip"
+    filePath = "/tmp/hello.zip"
     dependsOn = ['sample-base']
 }

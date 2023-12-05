@@ -25,6 +25,8 @@ class OssPlugin : Plugin<Project> {
                 project.tasks.create("upload2oss") {
                     it.group = "oss"
                     it.description = "上传文件到aliyun oss"
+
+                    uploadFile(extension)
                 }
             }
         } else {
@@ -35,7 +37,7 @@ class OssPlugin : Plugin<Project> {
     fun uploadFile(config: PluginConfig) {
         val file = File(config.filePath)
         if (!file.exists()) {
-            println("要上传的文件不存在：" + config.filePath)
+            println("要上传的文件路径不存在：" + config.filePath)
             return
         }
         val md5 = getFileMD5(file)
