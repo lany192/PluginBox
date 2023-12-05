@@ -5,26 +5,34 @@ import org.json.simple.JSONObject
 
 open class PluginConfig {
 
-    var bucketEndpoint = ""
+    var endpoint = "https://oss-cn-shanghai.aliyuncs.com"
+
+    var bucketName = ""
+
+    var objectName = ""
 
     var accessKeyId = ""
 
     var accessKeySecret = ""
 
-    var bucketName = ""
+    var filePath = ""
 
     var dependsOn: Array<String> = emptyArray()
 
     constructor(project: Project) {
-        println("插件所在位置："+project.name)
+        println("插件所在位置：" + project.name)
     }
 
     fun toJson(): String {
         val json = JSONObject()
-        json["bucketEndpoint"] = bucketEndpoint
+        json["endpoint"] = endpoint
+        json["bucketName"] = bucketName
+        json["objectName"] = objectName
         json["accessKeyId"] = accessKeyId
         json["accessKeySecret"] = accessKeySecret
-        json["bucketName"] = bucketName
+
+        json["filePath"] = filePath
+
         json["dependsOn"] = dependsOn
         return json.toJSONString()
     }
